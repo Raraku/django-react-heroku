@@ -8,7 +8,7 @@ django-rest-auth==0.9.5
 django==2.2.6
 djangorestframework==3.10.3
 django-heroku==0.3.1
-dj-database-url==o.5.0
+dj-database-url==0.5.0
 psycopg2==2.8.4
 gunicorn==19.9.0
 whitenoise==4.1.4
