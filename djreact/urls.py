@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.views.decorators.cache import never_cache
 from django.contrib import admin
-from django.urls import path, include, re_path
+from django.urls import path, include
 from django.views.generic import TemplateView
 
 urlpatterns = [
@@ -24,5 +24,5 @@ urlpatterns = [
     path("rest-auth/registration/", include("rest_auth.registration.urls")),
     path("rest-auth/", include("rest_auth.urls")),
     path("api/", include("articles.api.urls")),
-    re_path("", never_cache(TemplateView.as_view(template_name="index.html"))),
+    path("/", TemplateView.as_view(template_name="index.html")),
 ]
