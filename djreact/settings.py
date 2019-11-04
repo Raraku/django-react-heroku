@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "xil5p)ri@z4lo0pi2jma(cmqi#5uti)7_(=3)np5wd@j2t7@a8"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["aire-1.herokuapp.com/", ]
 
@@ -86,13 +86,10 @@ WSGI_APPLICATION = "djreact.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-if DEBUG == False:
-    DATABASES = {}
-    DATABASES["default"] = dj_database_url.config(conn_max_age=600)
-else:
-    DATABASES = {
-        "default": {"ENGINE": "django.db.backends.sqlite3", "NAME": "mydatabase"}
-    }
+
+DATABASES = {}
+DATABASES["default"] = dj_database_url.config(conn_max_age=600)
+
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
