@@ -2,6 +2,7 @@ import React from "react";
 import Articles from "./../components/Article";
 import axios from "axios";
 import CustomForm from "./../components/Form";
+import { production_url } from "./../production_url";
 
 class ArticleList extends React.Component {
   constructor(props) {
@@ -12,14 +13,14 @@ class ArticleList extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://127.0.0.1:8000/api/").then((res) => {
+    axios.get(`${production_url}/api/`).then((res) => {
       this.setState({
         articles: res.data
       });
     });
   }
   componentDidChange() {
-    axios.get("http://127.0.0.1:8000/api/").then((res) => {
+    axios.get(`${production_url}/api`).then((res) => {
       this.setState({
         articles: res.data
       });

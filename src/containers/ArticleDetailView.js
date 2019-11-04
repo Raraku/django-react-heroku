@@ -3,6 +3,7 @@ import axios from "axios";
 import { Card } from "antd";
 import CustomForm from "../components/Form";
 import { Button, Form, Alert } from "react-bootstrap";
+import { production_url } from "./../production_url";
 class ArticleDetail extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +15,7 @@ class ArticleDetail extends React.Component {
 
   componentDidMount() {
     const articleID = this.props.match.params.articleID;
-    axios.get(`http://127.0.0.1:8000/api/${articleID}`).then((res) => {
+    axios.get(`${production_url}/api/${articleID}`).then((res) => {
       this.setState({
         article: res.data
       });
@@ -22,7 +23,7 @@ class ArticleDetail extends React.Component {
   }
   componentDidChange() {
     const articleID = this.props.match.params.articleID;
-    axios.get(`http://127.0.0.1:8000/api/${articleID}`).then((res) => {
+    axios.get(`${production_url}/api/${articleID}`).then((res) => {
       this.setState({
         article: res.data,
         response: ""
@@ -32,7 +33,7 @@ class ArticleDetail extends React.Component {
   handleDelete = (event) => {
     event.preventDefault();
     const articleID = this.props.match.params.articleID;
-    axios.delete(`http://127.0.0.1:8000/api/${articleID}`).then(() => {
+    axios.delete(`${production_url}/api/${articleID}`).then(() => {
       this.setState({
         ...this.state,
         article: "Your article has been deleted",
