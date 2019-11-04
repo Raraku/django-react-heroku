@@ -1,7 +1,6 @@
 import React from "react";
 import { Form, Input, Button } from "antd";
 import axios from "axios";
-import { production_url } from "./../production_url";
 
 class CustomForm extends React.Component {
   handleFormSubmit = (event, requestType, articleID) => {
@@ -13,7 +12,7 @@ class CustomForm extends React.Component {
     switch (requestType) {
       case "post":
         return axios
-          .post(`${production_url}/api/`, {
+          .post("api/", {
             title: title,
             content: content,
             description: description
@@ -22,7 +21,7 @@ class CustomForm extends React.Component {
           .catch((err) => console.log(err));
       case "put":
         return axios
-          .put(`${production_url}/api/${articleID}/`, {
+          .put(`api/${articleID}/`, {
             title: title,
             content: content,
             description: description

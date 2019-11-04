@@ -1,3 +1,4 @@
 {
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "black",
+    "python.pythonPath": "C:\\Users\\Israel Aire\\.virtualenvs\\djreact--pUc2Pf2\\Scripts\\python.exe"
 }
