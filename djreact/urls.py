@@ -26,5 +26,4 @@ urlpatterns = [
     path("rest-auth/registration/", include("rest_auth.registration.urls")),
     path("rest-auth/", include("rest_auth.urls")),
     path("api/", include("articles.api.urls")),
-    re_path("", never_cache(TemplateView.as_view(template_name="index.html"))),
 ]
