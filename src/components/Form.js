@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Input, Button } from "antd";
 import axios from "axios";
+import { connect } from "react-redux";
 
 class CustomForm extends React.Component {
   handleFormSubmit = (event, requestType, articleID) => {
@@ -9,6 +10,10 @@ class CustomForm extends React.Component {
     const content = event.target.elements.content.value;
     const description = event.target.elements.description.value;
     console.log(title, content, description);
+    axios.defaults.headers = {
+      "Content-Type": "application/json",
+      Authorization: `Token ${this.props.token}`
+    };
     switch (requestType) {
       case "post":
         return axios
@@ -21,12 +26,12 @@ class CustomForm extends React.Component {
           .catch((err) => console.log(err));
       case "put":
         return axios
-          .put(`api/${articleID}/`, {
+          .put(`/api/${articleID}/`, {
             title: title,
             content: content,
             description: description
           })
-          .then((res) => console.log(res))
+          .then(this.props.callbacktoreload)
           .catch((err) => console.log(err));
       default:
         return "error";
@@ -54,11 +59,7 @@ class CustomForm extends React.Component {
             <Input name="description" placeholder="Description" />
           </Form.Item>
           <Form.Item>
-            <Button
-              onClick={this.props.reloadCallback}
-              type="primary"
-              htmlType="submit"
-            >
+            <Button htmlType="submit" type="primary" htmlType="submit">
               {this.props.btnText}
             </Button>
           </Form.Item>
@@ -67,4 +68,9 @@ class CustomForm extends React.Component {
     );
   }
 }
-export default CustomForm;
+const mapStateToProps = (state) => {
+  return {
+    token: state.token
+  };
+};
+export default connect(mapStateToProps)(CustomForm);

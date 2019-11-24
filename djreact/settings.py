@@ -27,12 +27,12 @@ SECRET_KEY = "xil5p)ri@z4lo0pi2jma(cmqi#5uti)7_(=3)np5wd@j2t7@a8"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["aire-1.herokuapp.com/", ]
-
+ALLOWED_HOSTS = ["aire-1.herokuapp.com/", "http://127.0.0.1:8000/", "localhost:8000"]
 
 # Application definition
 
 INSTALLED_APPS = [
+    "corsheaders",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.sites",
@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "rest_framework.authtoken",
-    "corsheaders",
     "rest_auth",
     "rest_auth.registration",
     "allauth",
@@ -87,16 +86,13 @@ WSGI_APPLICATION = "djreact.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-if DEBUG==True:
+if DEBUG == False:
     DATABASES = {}
     DATABASES["default"] = dj_database_url.config(conn_max_age=600)
 else:
     DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'mydatabase',
+        "default": {"ENGINE": "django.db.backends.sqlite3", "NAME": "mydatabase",}
     }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -135,10 +131,10 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
 REST_FRAMEWORK = {
-    "DEFAULT_PERMISSION_CLASSES": [
-        # "rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly"
-        "rest_framework.permissions.AllowAny"
-    ]
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
+    ],
+    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
 }
 SITE_ID = 1
 CORS_ORIGIN_ALLOW_ALL = True

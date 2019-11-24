@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import axios from "axios";
 import { Card } from "antd";
 import CustomForm from "../components/Form";
@@ -7,22 +8,29 @@ class ArticleDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      article: {},
+      article: [],
       show: false
     };
   }
-
-  componentDidMount() {
-    const articleID = this.props.match.params.articleID;
-    axios.get(`api/${articleID}`).then((res) => {
-      this.setState({
-        article: res.data
+  componentWillReceiveProps(newProps) {
+    console.log(newProps);
+    if (newProps.token) {
+      axios.defaults.headers = {
+        "Content-Type": "application/json",
+        Authorization: `Token ${newProps.token}`
+      };
+      const articleID = this.props.match.params.articleID;
+      axios.get(`/api/${articleID}/`).then((res) => {
+        this.setState({
+          article: res.data
+        });
       });
-    });
+    }
   }
+
   componentDidChange() {
     const articleID = this.props.match.params.articleID;
-    axios.get(`api/${articleID}`).then((res) => {
+    axios.get(`/api/${articleID}/`).then((res) => {
       this.setState({
         article: res.data,
         response: ""
@@ -31,15 +39,23 @@ class ArticleDetail extends React.Component {
   }
   handleDelete = (event) => {
     event.preventDefault();
-    const articleID = this.props.match.params.articleID;
-    axios.delete(`api/${articleID}`).then(() => {
-      this.setState({
-        ...this.state,
-        article: "Your article has been deleted",
-        show: true
+    if (this.props.token !== null) {
+      const articleID = this.props.match.params.articleID;
+      axios.defaults.headers = {
+        "Content-Type": "application/json",
+        Authorization: `Token ${this.props.token}`
+      };
+      axios.delete(`/api/${articleID}/`).then(() => {
+        this.setState({
+          ...this.state,
+          article: "Your article has been deleted",
+          show: true
+        });
+        this.props.history.push("/");
       });
-      this.props.history.push("/");
-    });
+    } else {
+      //show some message
+    }
   };
 
   render() {
@@ -73,5 +89,9 @@ class ArticleDetail extends React.Component {
     }
   }
 }
-
-export default ArticleDetail;
+const mapStateToProps = (state) => {
+  return {
+    token: state.token
+  };
+};
+export default connect(mapStateToProps)(ArticleDetail);
