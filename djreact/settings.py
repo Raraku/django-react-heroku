@@ -87,16 +87,8 @@ WSGI_APPLICATION = "djreact.wsgi.application"
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 if DEBUG == False:
-    DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd6767b6vfpjlas',
-        'USER': 'oebacdvnlpjleo',
-        'PASSWORD': '2346114167626996f9eaccf3b4244fb8e51914aa3292780bd5d684759d1bd00f',
-        'HOST': 'ec2-174-129-227-128.compute-1.amazonaws.com',
-        'PORT': '5432',
-    }
-}
+    DATABASES = {}
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=False)
 else:
     DATABASES = {
         "default": {"ENGINE": "django.db.backends.sqlite3", "NAME": "mydatabase",}
