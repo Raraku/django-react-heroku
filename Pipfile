@@ -30,6 +30,7 @@ requests = "==2.22.0"
 six = "==1.12.0"
 sqlparse = "==0.3.0"
 urllib3 = "==1.25.6"
+django-seo-js = "*"
 
 [requires]
 python_version = "3.7"

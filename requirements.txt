@@ -2,16 +2,15 @@
 certifi==2019.9.11
 chardet==3.0.4
 defusedxml==0.6.0
+dj-database-url==0.5.0
 django-allauth==0.40.0
 django-cors-headers==3.1.1
+django-heroku==0.3.1
 django-rest-auth==0.9.5
+django-seo-js==0.3.2
 django==2.2.6
 djangorestframework==3.10.3
-django-heroku==0.3.1
-dj-database-url==0.5.0
-psycopg2==2.8.4
 gunicorn==19.9.0
-whitenoise==4.1.4
 idna==2.8
 oauthlib==3.1.0
 psycopg2==2.8.4
@@ -22,3 +21,5 @@ requests==2.22.0
 six==1.12.0
 sqlparse==0.3.0
 urllib3==1.25.6
+waitress==1.3.1
+whitenoise==4.1.4
