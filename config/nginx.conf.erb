@@ -12,6 +12,8 @@ http {
   gzip on;
   gzip_comp_level 2;
   gzip_min_length 124;
+  gzip_http_version 1.0;
+  gzip_proxied any;
 
   server_tokens off;
 
@@ -43,3 +45,4 @@ http {
       proxy_pass http://app_server;
     }
   }
+}
