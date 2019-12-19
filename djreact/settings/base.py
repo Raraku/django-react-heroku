@@ -88,13 +88,10 @@ WSGI_APPLICATION = "djreact.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-if DEBUG == False:
-    DATABASES = {}
-    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=False)
-else:
-    DATABASES = {
-        "default": {"ENGINE": "django.db.backends.sqlite3", "NAME": "mydatabase",}
-    }
+
+DATABASES = {
+    "default": {"ENGINE": "django.db.backends.sqlite3", "NAME": "mydatabase",}
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
