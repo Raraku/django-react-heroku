@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import * as actions from "../store/actions/auth";
 import { connect } from "react-redux";
 import { Form, Input, Icon, Button } from "antd";
@@ -8,7 +8,7 @@ class Signup extends React.Component {
     confirmDirty: false
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
@@ -24,7 +24,7 @@ class Signup extends React.Component {
     });
   };
 
-  handleConfirmBlur = (e) => {
+  handleConfirmBlur = e => {
     const { value } = e.target;
     this.setState({ confirmDirty: this.state.confirmDirty || !!value });
   };
@@ -142,13 +142,13 @@ class Signup extends React.Component {
 
 const WrappedRegistrationForm = Form.create({ name: "register" })(Signup);
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     loading: state.loading,
     error: state.error
   };
 };
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     onAuth: (username, email, password1, password2) =>
       dispatch(actions.authSignup(username, email, password1, password2))

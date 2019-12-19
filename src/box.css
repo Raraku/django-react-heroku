@@ -1,0 +1,9 @@
+.mybox {
+    height: 100px;
+    width: 400px;
+    box-shadow: 2px -3px grey, -2px -2px grey;
+    text-align: center;
+    display: inline-block;
+    margin-bottom: 5px;
+    margin-top: 10px
+}

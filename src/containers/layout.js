@@ -3,9 +3,10 @@ import { Layout, Menu, Breadcrumb } from "antd";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../store/actions/auth";
+import { Container, Col, Row } from "react-bootstrap";
 
 const { Header, Content, Footer } = Layout;
-const CustomLayout = (props) => {
+const CustomLayout = props => {
   return (
     <Layout className="layout">
       <Header>
@@ -43,6 +44,12 @@ const CustomLayout = (props) => {
           {props.children}
         </div>
       </Content>
+      <Container className="mybox">
+        <p style={{ verticalAlign: "center", fontSize: "3vmin" }}>
+          This is where the ad will go
+        </p>
+      </Container>
+
       <Footer style={{ textAlign: "center" }}>
         Ant Design ©2018 Created by Ant UED
       </Footer>
@@ -50,15 +57,10 @@ const CustomLayout = (props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     logout: () => dispatch(actions.logout())
   };
 };
 
-export default withRouter(
-  connect(
-    null,
-    mapDispatchToProps
-  )(CustomLayout)
-);
+export default withRouter(connect(null, mapDispatchToProps)(CustomLayout));
