@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "./static/static/css/main.ee880e47.chunk.css",
-    "main.js": "./static/static/js/main.eb30796e.chunk.js",
-    "main.js.map": "./static/static/js/main.eb30796e.chunk.js.map",
-    "runtime-main.js": "./static/static/js/runtime-main.08c122e1.js",
-    "runtime-main.js.map": "./static/static/js/runtime-main.08c122e1.js.map",
-    "static/css/2.6ebcfcee.chunk.css": "./static/static/css/2.6ebcfcee.chunk.css",
-    "static/js/2.6d2a12a5.chunk.js": "./static/static/js/2.6d2a12a5.chunk.js",
-    "static/js/2.6d2a12a5.chunk.js.map": "./static/static/js/2.6d2a12a5.chunk.js.map",
-    "index.html": "./static/index.html",
-    "precache-manifest.743c957d58e05facf2af0b201e12d172.js": "./static/precache-manifest.743c957d58e05facf2af0b201e12d172.js",
-    "service-worker.js": "./static/service-worker.js",
-    "static/css/2.6ebcfcee.chunk.css.map": "./static/static/css/2.6ebcfcee.chunk.css.map",
-    "static/css/main.ee880e47.chunk.css.map": "./static/static/css/main.ee880e47.chunk.css.map",
-    "static/media/background.svg": "./static/static/media/background.e41cf302.svg"
+    "main.css": "/static/static/css/main.ee880e47.chunk.css",
+    "main.js": "/static/static/js/main.64be524f.chunk.js",
+    "main.js.map": "/static/static/js/main.64be524f.chunk.js.map",
+    "runtime-main.js": "/static/static/js/runtime-main.d83e6aab.js",
+    "runtime-main.js.map": "/static/static/js/runtime-main.d83e6aab.js.map",
+    "static/css/2.6ebcfcee.chunk.css": "/static/static/css/2.6ebcfcee.chunk.css",
+    "static/js/2.612c3441.chunk.js": "/static/static/js/2.612c3441.chunk.js",
+    "static/js/2.612c3441.chunk.js.map": "/static/static/js/2.612c3441.chunk.js.map",
+    "index.html": "/static/index.html",
+    "precache-manifest.cdaba792627320a1238733efc16497e4.js": "/static/precache-manifest.cdaba792627320a1238733efc16497e4.js",
+    "service-worker.js": "/static/service-worker.js",
+    "static/css/2.6ebcfcee.chunk.css.map": "/static/static/css/2.6ebcfcee.chunk.css.map",
+    "static/css/main.ee880e47.chunk.css.map": "/static/static/css/main.ee880e47.chunk.css.map",
+    "static/media/background.svg": "/static/static/media/background.e41cf302.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.08c122e1.js",
+    "static/js/runtime-main.d83e6aab.js",
     "static/css/2.6ebcfcee.chunk.css",
-    "static/js/2.6d2a12a5.chunk.js",
+    "static/js/2.612c3441.chunk.js",
     "static/css/main.ee880e47.chunk.css",
-    "static/js/main.eb30796e.chunk.js"
+    "static/js/main.64be524f.chunk.js"
   ]
 }
