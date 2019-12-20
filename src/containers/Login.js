@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
 class NormalLoginForm extends React.Component {
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
@@ -16,6 +16,9 @@ class NormalLoginForm extends React.Component {
     });
     this.props.history.push("/");
   };
+  componentDidMount() {
+    document.title = "Login - Articulator";
+  }
 
   render() {
     let errorMessage = null;
@@ -86,13 +89,13 @@ class NormalLoginForm extends React.Component {
 const WrappedNormalLoginForm = Form.create({ name: "normal_login" })(
   NormalLoginForm
 );
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     loading: state.loading,
     error: state.error
   };
 };
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     onAuth: (username, password) =>
       dispatch(actions.authLogin(username, password))

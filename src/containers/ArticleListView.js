@@ -11,6 +11,9 @@ class ArticleList extends React.Component {
       articles: []
     };
   }
+  componentDidMount() {
+    document.title = "Articles - Articulator";
+  }
 
   componentWillReceiveProps(newProps) {
     console.log(newProps);
@@ -19,7 +22,7 @@ class ArticleList extends React.Component {
         "Content-Type": "application/json",
         Authorization: `Token ${newProps.token}`
       };
-      axios.get("api/").then((res) => {
+      axios.get("api/").then(res => {
         this.setState({
           articles: res.data
         });
@@ -43,7 +46,7 @@ class ArticleList extends React.Component {
     );
   }
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     token: state.token
   };

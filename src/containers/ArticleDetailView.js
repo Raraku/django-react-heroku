@@ -9,7 +9,8 @@ class ArticleDetail extends React.Component {
     super(props);
     this.state = {
       article: [],
-      show: false
+      show: false,
+      articleid: ""
     };
   }
   componentWillReceiveProps(newProps) {
@@ -20,24 +21,30 @@ class ArticleDetail extends React.Component {
         Authorization: `Token ${newProps.token}`
       };
       const articleID = this.props.match.params.articleID;
-      axios.get(`/api/${articleID}/`).then((res) => {
-        this.setState({
-          article: res.data
-        });
-      });
+      axios
+        .get(`/api/${articleID}/`)
+        .then(res => {
+          this.setState({
+            article: res.data
+          });
+        })
+        .then(
+          (document.title = `Article ${articleID} - Articulator`),
+          console.log(this.state)
+        );
     }
   }
 
   componentDidChange() {
     const articleID = this.props.match.params.articleID;
-    axios.get(`/api/${articleID}/`).then((res) => {
+    axios.get(`/api/${articleID}/`).then(res => {
       this.setState({
         article: res.data,
         response: ""
       });
     });
   }
-  handleDelete = (event) => {
+  handleDelete = event => {
     event.preventDefault();
     if (this.props.token !== null) {
       const articleID = this.props.match.params.articleID;
@@ -89,7 +96,7 @@ class ArticleDetail extends React.Component {
     }
   }
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     token: state.token
   };

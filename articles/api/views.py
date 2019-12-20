@@ -5,7 +5,7 @@ from rest_framework.permissions import AllowAny
 
 
 class ArticleViewSet(viewsets.ModelViewSet):
-    permission_classes=[AllowAny,]
+    permission_classes=[AllowAny]
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
 
