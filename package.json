@@ -42,5 +42,7 @@
     "node": "10.16.3",
     "npm": "6.9.0"
   },
-  "proxy": "http://localhost:8000"
+  "proxy": "http://localhost:8000",
+  "homepage": "./static"
+
 }
