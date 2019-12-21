@@ -127,7 +127,7 @@ USE_TZ = True
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'build')]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 WHITENOISE_ROOT = os.path.join(BASE_DIR, "build")
 
 
@@ -176,7 +176,4 @@ LOGGING = {
         }
     }
 }
-PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'build/serviceworker.js')
-
-
 
