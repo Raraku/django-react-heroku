@@ -124,7 +124,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = "/"
+STATIC_URL = "/static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'build')]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
@@ -176,6 +176,7 @@ LOGGING = {
         }
     }
 }
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'build/serviceworker.js')
 
 
 
