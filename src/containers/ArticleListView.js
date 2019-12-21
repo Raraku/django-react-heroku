@@ -11,9 +11,6 @@ class ArticleList extends React.Component {
       articles: []
     };
   }
-  componentDidMount() {
-    document.title = "Articles - Articulator";
-  }
 
   componentWillReceiveProps(newProps) {
     console.log(newProps);

@@ -1,6 +1,6 @@
 .mybox {
     height: 100px;
-    width: 400px;
+    width: 300px;
     box-shadow: 2px -3px grey, -2px -2px grey;
     text-align: center;
     display: inline-block;

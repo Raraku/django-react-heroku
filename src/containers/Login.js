@@ -16,9 +16,6 @@ class NormalLoginForm extends React.Component {
     });
     this.props.history.push("/");
   };
-  componentDidMount() {
-    document.title = "Login - Articulator";
-  }
 
   render() {
     let errorMessage = null;

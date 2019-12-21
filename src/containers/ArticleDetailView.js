@@ -21,17 +21,11 @@ class ArticleDetail extends React.Component {
         Authorization: `Token ${newProps.token}`
       };
       const articleID = this.props.match.params.articleID;
-      axios
-        .get(`/api/${articleID}/`)
-        .then(res => {
-          this.setState({
-            article: res.data
-          });
-        })
-        .then(
-          (document.title = `Article ${articleID} - Articulator`),
-          console.log(this.state)
-        );
+      axios.get(`/api/${articleID}/`).then(res => {
+        this.setState({
+          article: res.data
+        });
+      });
     }
   }
 
