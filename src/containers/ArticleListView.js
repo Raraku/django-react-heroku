@@ -12,19 +12,12 @@ class ArticleList extends React.Component {
     };
   }
 
-  componentWillReceiveProps(newProps) {
-    console.log(newProps);
-    if (newProps.token) {
-      axios.defaults.headers = {
-        "Content-Type": "application/json",
-        Authorization: `Token ${newProps.token}`
-      };
-      axios.get("api/").then(res => {
-        this.setState({
-          articles: res.data
-        });
+  componentDidMount() {
+    axios.get("api/").then((res) => {
+      this.setState({
+        articles: res.data
       });
-    }
+    });
   }
 
   render() {
@@ -43,7 +36,7 @@ class ArticleList extends React.Component {
     );
   }
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     token: state.token
   };
