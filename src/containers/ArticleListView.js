@@ -3,27 +3,40 @@ import Articles from "./../components/Article";
 import axios from "axios";
 import CustomForm from "./../components/Form";
 import { connect } from "react-redux";
+import suspensefallback from "./Bean.svg";
 
 class ArticleList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      articles: []
+      articles: [],
+      isLoading: true
     };
   }
 
   componentDidMount() {
-    axios.get("api/").then((res) => {
-      this.setState({
-        articles: res.data
-      });
-    });
+    axios
+      .get("api/")
+      .then((res) => {
+        this.setState({
+          articles: res.data
+        });
+      })
+      .then(this.setState({ isLoading: false }));
   }
 
   render() {
     return (
       <div>
-        <Articles data={this.state.articles} />
+        {this.state.isLoading ? (
+          <div className="suspense">
+            <img src={suspensefallback} alt="Articles are loading" />
+            <br />
+            <h3 style={{ position: "relative", left: "-15px" }}>loading...</h3>
+          </div>
+        ) : (
+          <Articles data={this.state.articles} />
+        )}
         <br />
         <h2 id="form-header">Create an Article</h2>
         <CustomForm

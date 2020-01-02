@@ -40,7 +40,7 @@ function Articles(props) {
               key="list-vertical-message"
             />
           ]}
-          extra={<img width={272} alt="logo" src={image} />}
+          extra={<img width={240} alt="logo" src={image} />}
         >
           <List.Item.Meta
             avatar={<Avatar src={item.avatar} />}
