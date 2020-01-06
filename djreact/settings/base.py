@@ -27,7 +27,12 @@ SECRET_KEY = "xil5p)ri@z4lo0pi2jma(cmqi#5uti)7_(=3)np5wd@j2t7@a8"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["aire-1.herokuapp.com/", "127.0.0.1", "localhost"]
+ALLOWED_HOSTS = [
+    "aire-1.herokuapp.com/",
+    "127.0.0.1",
+    "localhost",
+    "djreact.netlify.com",
+]
 
 # Application definition
 
@@ -47,10 +52,10 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
-    'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.twitter',
+    "allauth.socialaccount.providers.facebook",
+    "allauth.socialaccount.providers.twitter",
     "articles.apps.ArticlesConfig",
-    'gunicorn'
+    "gunicorn",
 ]
 
 MIDDLEWARE = [
@@ -70,7 +75,7 @@ ROOT_URLCONF = "djreact.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, "build")],
+        "DIRS": [],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -84,15 +89,25 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "djreact.wsgi.application"
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000",
+    "https://localhost:3000",
+    "https://localhost:8000",
+    "http://localhost:8000",
+    "https://djreact.netlify.com",
+    "http://djreact.netlify.com",
+]
 
+CSRF_TRUSTED_ORIGINS = [
+    "djreact.netlify.com",
+]
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 
-DATABASES = {
-    "default": {"ENGINE": "django.db.backends.sqlite3", "NAME": "mydatabase",}
-}
+DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3", "NAME": "mydatabase",}}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -125,7 +140,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'build')]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 WHITENOISE_ROOT = os.path.join(BASE_DIR, "staticfiles")
@@ -145,35 +159,27 @@ ACCOUNT_AUTHENTICATION_METHOD = "username"
 ACCOUNT_EMAIL_REQUIRED = "FALSE"
 
 LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format': ('%(asctime)s [%(process)d] [%(levelname)s] ' +
-                       'pathname=%(pathname)s lineno=%(lineno)s ' +
-                       'funcname=%(funcName)s %(message)s'),
-            'datefmt': '%Y-%m-%d %H:%M:%S'
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "verbose": {
+            "format": (
+                "%(asctime)s [%(process)d] [%(levelname)s] "
+                + "pathname=%(pathname)s lineno=%(lineno)s "
+                + "funcname=%(funcName)s %(message)s"
+            ),
+            "datefmt": "%Y-%m-%d %H:%M:%S",
         },
-        'simple': {
-            'format': '%(levelname)s %(message)s'
-        }
+        "simple": {"format": "%(levelname)s %(message)s"},
     },
-    'handlers': {
-        'null': {
-            'level': 'DEBUG',
-            'class': 'logging.NullHandler',
+    "handlers": {
+        "null": {"level": "DEBUG", "class": "logging.NullHandler",},
+        "console": {
+            "level": "DEBUG",
+            "class": "logging.StreamHandler",
+            "formatter": "verbose",
         },
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose'
-        }
     },
-    'loggers': {
-        'testlogger': {
-            'handlers': ['console'],
-            'level': 'INFO',
-        }
-    }
+    "loggers": {"testlogger": {"handlers": ["console"], "level": "INFO",}},
 }
 
