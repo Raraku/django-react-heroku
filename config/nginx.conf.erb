@@ -53,7 +53,6 @@ http {
         }
         if ($prerender = 0) {
           proxy_pass http://app_server;
-          proxy_redirect off;
         }
         if ($prerender = 1) {
             #setting prerender as a variable forces DNS resolution since nginx caches IPs and doesnt play well with load balancing
