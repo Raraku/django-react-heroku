@@ -41,6 +41,7 @@ http {
     location / {
       try_files $uri @prerender;
     }
+
     location @prerender {
       proxy_set_header X-Prerender-Token p1LPA1jS0ULtX1UZo0OL;
       set $prerender 0;
@@ -56,16 +57,13 @@ http {
         if ($uri ~* "\.(js|css|xml|less|png|jpg|jpeg|gif|pdf|doc|txt|ico|rss|zip|mp3|rar|exe|wmv|doc|avi|ppt|mpg|mpeg|tif|wav|mov|psd|ai|xls|mp4|m4a|swf|dat|dmg|iso|flv|m4v|torrent|ttf|woff|svg|eot)") {
             set $prerender 0;
         }
-        
-        #resolve using Google's DNS server to force DNS resolution and prevent caching of IPs
-        resolver 8.8.8.8;
- 
+
         if ($prerender = 1) {
             
             #setting prerender as a variable forces DNS resolution since nginx caches IPs and doesnt play well with load balancing
             set $prerender "service.prerender.io";
             rewrite .* /$scheme://$host$request_uri? break;
-            proxy_pass http://$prerender;
+            proxy_pass http://service.prerender.io;
         }
         if ($prerender = 0) {
           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
