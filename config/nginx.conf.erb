@@ -45,7 +45,7 @@ http {
     location @prerender {
       proxy_set_header X-Prerender-Token p1LPA1jS0ULtX1UZo0OL;
       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-      proxy_set_header Host $http_host;
+      proxy_set_header Host aire-1.herokuapp.com;
       proxy_redirect off;
       set $prerender 0;
         if ($http_user_agent ~* "googlebot|bingbot|yandex|baiduspider|twitterbot|facebookexternalhit|rogerbot|linkedinbot|embedly|quora link preview|showyoubot|outbrain|pinterest\/0\.|pinterestbot|slackbot|vkShare|W3C_Validator|whatsapp") {
